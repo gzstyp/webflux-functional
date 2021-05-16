@@ -14,7 +14,7 @@ public class UserHandler {
 
     private final UserRepository customerRepository;
 
-    public UserHandler(UserRepository repository) {
+    public UserHandler(final UserRepository repository) {
         this.customerRepository = repository;
     }
 

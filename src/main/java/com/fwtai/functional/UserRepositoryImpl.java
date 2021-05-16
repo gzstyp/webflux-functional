@@ -15,8 +15,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @PostConstruct
     public void init() throws Exception {
-        users.put(Long.valueOf(1), new User(1, "Jack", "Smith", 20));
-        users.put(Long.valueOf(2), new User(2, "Peter", "Johnson", 25));
+        users.put(1L, new User(1, "Jack", "Smith", 20));
+        users.put(2L, new User(2, "Peter", "Johnson", 25));
     }
 
     @Override
@@ -34,11 +34,9 @@ public class UserRepositoryImpl implements UserRepository {
         Mono<User> userMono = monoUser.doOnNext(user -> {
             // do post
             users.put(user.getId(), user);
-
             // log on console
             System.out.println("########### POST:" + user);
         });
-
         return userMono.then();
     }
 
